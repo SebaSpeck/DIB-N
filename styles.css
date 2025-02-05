@@ -1,0 +1,83 @@
+/* Fondo y fuente principal */
+body {
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Título con tamaño 18pt y fuente ALGERIAN */
+header {
+  padding-top: 20px;
+}
+
+.titulo {
+  font-family: 'ALGERIAN', sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Logo en la esquina extrema superior izquierda con animación de ondulación */
+.logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25mm;
+  height: 25mm;
+  animation: wave 3s ease-in-out infinite;
+}
+
+/* Contenedor para los botones en línea */
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilo de los botones: fondo verde constante y resplandor al tocarlos */
+.btn {
+  background-color: #00ff00;
+  border: 2px solid #00ff00;
+  color: black;
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn:active {
+  box-shadow: 0 0 10px 3px #00ff00;
+}
+
+/* Animación de ondulación para el logo */
+@keyframes wave {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Estilo del canvas para el efecto Matrix */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

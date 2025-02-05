@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIBE-N-</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Canvas para el efecto Matrix -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Logo en la esquina extrema superior izquierda -->
+  <img src="https://imgur.com/bdzNiuI.png" alt="Logo" class="logo">
+
+  <header>
+    <h1 class="titulo">DIBE-N-</h1>
+  </header>
+
+  <main>
+    <div class="button-container">
+      <button class="btn" onclick="window.location.href='https://forms.gle/UZytxMmeampqaWCVA'">Pedido de Trabajo</button>
+      <button class="btn" onclick="window.location.href='https://forms.gle/V8ZnTdUrCswWYzYHA'">Reintegro</button>
+      <button class="btn" onclick="window.location.href='https://forms.gle/kw7Ee9Byb9tAWGGa7'">Adelanto en efectivo</button>
+    </div>
+  </main>
+
+  <!-- Script para el efecto Matrix -->
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    // Ajusta el tamaño del canvas al tamaño de la ventana
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+    const lettersArray = letters.split("");
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    // Array para las gotas de lluvia
+    const drops = [];
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function draw() {
+      // Crea un fondo semi-transparente para el efecto de desvanecimiento
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ff00"; // Color verde Matrix
+      ctx.font = fontSize + "px arial";
+
+      // Dibuja un caracter en cada columna
+      for (let i = 0; i < drops.length; i++) {
+        const text = lettersArray[Math.floor(Math.random() * lettersArray.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // Reinicia la gota de forma aleatoria
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+
+    // Ajusta el canvas si cambia el tamaño de la ventana
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
+</body>
+</html>
