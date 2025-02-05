@@ -6,11 +6,16 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
 }
 
 /* Título con tamaño 18pt y fuente ALGERIAN */
 header {
-  padding-top: 20px;
+  margin-bottom: 20px; /* Espacio entre el título y los botones */
 }
 
 .titulo {
@@ -33,10 +38,8 @@ header {
 /* Contenedor para los botones en línea */
 .button-container {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+  gap: 10px; /* Espacio entre los botones */
 }
 
 /* Estilo de los botones: fondo verde constante y resplandor al tocarlos */
@@ -45,7 +48,6 @@ header {
   border: 2px solid #00ff00;
   color: black;
   padding: 15px 30px;
-  margin: 10px;
   font-size: 18px;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
@@ -80,4 +82,6 @@ header {
   top: 0;
   left: 0;
   z-index: -1;
+  width: 100%;
+  height: 100%;
 }
